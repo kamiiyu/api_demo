@@ -1,6 +1,19 @@
+require 'api_constraints'
 Rails.application.routes.draw do
-  resources :articles, except: [:new, :edit]
-  resources :authors, except: [:new, :edit]
+  namespace :api, default: {format: 'json'} do
+    namespace :v1 do
+      scope constraints: ApiConstraints.new(version: 1.1) do
+        resources :articles, except: [:new, :edit]
+        resources :authors, except: [:new, :edit]
+      end
+    end
+    namespace :v2 do
+      scope constraints: ApiConstraints.new(version: 2.1, default: true) do
+        resources :articles, except: [:new, :edit]
+        resources :authors, except: [:new, :edit]
+      end
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

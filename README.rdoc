@@ -32,7 +32,9 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Rest api test
+
+        curl -H 'Accept: application/vnd.api_demo.v1.1.t2a7f629d41e44325413f8966af026ec978eca044' http://localhost:3000/api/v1/articles
 
 
 Please feel free to use a different markup language if you do not plan to run
